@@ -1,0 +1,489 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.start-page-body {
+    font-family: 'Courier New', Courier, monospace; /* Шрифт как в терминале */
+    background-color: #0a0a0a; /* Темный фон */
+    color: #00ff00; /* Неоновый зеленый текст */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.start-main-container {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.start-btn-container {
+    margin-top: 30px;
+}
+
+.start-btn {
+    font-size: 24px;
+    padding: 15px 30px;
+    color: #00ff00; /* Неоновая зеленая кнопка */
+    background-color: #111; /* Фон кнопки как у терминала */
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background-color: #00ff00;
+    color: #111;
+    transform: scale(1.1); /* Эффект увеличения при наведении */
+    text-shadow: 0 0 10px #00ff00; /* Неоновый эффект при наведении */
+}
+
+.start-btn:active {
+    transform: scale(1.05); /* Небольшое уменьшение при нажатии */
+}
+
+.start-btn-container:hover {
+    transform: scale(1.2);
+}
+
+.start-btn-blink {
+    animation: blink 1.5s infinite; /* Эффект мигания */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Canvas позади основного контента */
+    background-color: #000; /* Чёрный фон как у Матрицы */
+}
+
+/* TASK1 */
+.task1-body {
+    background-color: #1e1e1e;
+}
+.task1-container {
+    display: grid;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Темный фон */
+    color: #e0e0e0; /* Светлый текст */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Более контрастная тень */
+    border-radius: 8px;
+}
+
+.task1-container h1,.task1-container h2 {
+    text-align: center;
+    color: #ff6600; /* Яркий оранжевый для заголовков */
+    text-shadow: 2px 2px 5px rgba(255, 102, 0, 0.6); /* Свечение */
+    font-family: 'Roboto', sans-serif;
+}
+
+.code-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #2e2e2e; /* Темный фон таблицы */
+    color: #ffcc00; /* Желтый текст */
+}
+
+.code-table th, .code-table td {
+    border: 1px solid #555; /* Более темные границы */
+    padding: 10px;
+    text-align: center;
+    font-size: 29px;
+}
+
+.code-form {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 2;
+}
+
+.form-list {
+    list-style: none;
+    width: 100%;
+}
+
+.form-list li {
+    margin-bottom: 12px;
+}
+
+.form-list label {
+    display: inline-block;
+    width: 40%;
+    text-align: left;
+}
+
+.code-form input {
+    padding: 10px;
+    width: 50%;
+    margin: 10px 0;
+    background-color: #333; /* Темный фон поля ввода */
+    color: #fff; /* Светлый текст */
+    border: 1px solid #666; /* Темные границы */
+    transition: border-color 0.3s ease; /* Плавное изменение цвета */
+    outline: none;
+}
+
+.code-form input:focus {
+    border-color: #ff6600; /* Яркая граница при фокусе */
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5); /* Эффект свечения */
+}
+
+.task1-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff6600; /* Яркая кнопка */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.task1-submit:hover {
+    background-color: #e65c00; /* Немного темнее при наведении */
+    transform: scale(1.05); /* Легкое увеличение */
+}
+
+button:hover {
+    background-color: #e65c00; /* Соответствующий цвет для всех кнопок */
+}
+
+.task1-exits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    gap: 2rem; /* расстояние между блоками */
+    height: auto;
+    margin-top: 1rem;
+}
+
+.task1-exits div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task1-exits a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.task1-exits img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* чтобы изображения корректно вписывались в блок */
+    border-radius: 10px; /* добавим скругление углов для эстетики */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Плавные анимации */
+    border: 2px solid #555; /* Темные границы изображений */
+}
+
+.task1-exits a:not(.inactive-link) img:hover {
+    transform: scale(1.1); /* Больше увеличение при наведении */
+    border-color: #ff6600; /* Цвет границы при наведении */
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.7); /* Светящийся эффект */
+}
+
+.inactive-link {
+    pointer-events: none;
+}
+
+.inactive-link img {
+    filter: grayscale(100%); /* Делает изображение серым */
+    opacity: 0.5; /* Полупрозрачность */
+}
+
+.inactive-link img:hover {
+    transform: none; /* Отключаем масштабирование при наведении */
+}
+
+
+
+/* task2 styles */
+
+/* Основной контейнер */
+.task2-container {
+    display: grid;
+    margin: 0 auto;
+    width: 80%;
+    height: auto;
+    background-color: #1e1e1e; /* Темный фон */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Легкая тень */
+    border-radius: 10px; /* Скругление краев */
+    padding: 20px;
+}
+
+/* Контейнер для карты */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map {
+    position: relative;
+    height: auto;
+    background-size: cover;
+    border: 3px solid #4CAF50; /* Ярко-зеленая рамка */
+    border-radius: 10px;
+}
+
+/* Canvas для рисования маршрутов */
+.task2-body {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 255, 0.8) 50%, rgba(128, 0, 128, 0.9) 75%);
+    background-size: 400% 400%;
+    animation: gradient-animation 105s ease infinite;
+    color: #fff; /* Белый текст для контраста с фоном */
+    font-family: 'Roboto', sans-serif;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.task2-rules {
+    background-color: #1e1e1e; /* Темный фон */
+    border: 1px solid #ccc; /* Рамка блока */
+    border-radius: 8px; /* Закругление углов */
+    padding: 20px; /* Внутренний отступ */
+    margin-bottom: 20px; /* Отступ снизу */
+    font-family: Arial, sans-serif; /* Шрифт */
+}
+
+.task2-rules h2 {
+    color: #e2e2e2; /* Цвет заголовка */
+    font-size: 24px; /* Размер шрифта заголовка */
+    margin-bottom: 15px; /* Отступ снизу заголовка */
+}
+
+.task2-rules p {
+    color: #e2e2e2; /* Цвет заголовка */
+    font-size: 16px; /* Размер шрифта параграфов */
+    line-height: 1.5; /* Междустрочный интервал */
+    margin-bottom: 10px; /* Отступ снизу параграфов */
+}
+
+.task2-rules ul {
+    list-style-type: disc; /* Тип маркеров списка */
+    padding-left: 20px; /* Отступ для списка */
+}
+
+.task2-rules li {
+    color: #e2e2e2; /* Цвет заголовка */
+    font-size: 16px; /* Размер шрифта в списке */
+    margin-bottom: 5px; /* Отступ между элементами списка */
+}
+
+
+
+.task2-canv {
+    height: 900px;
+    background-color: #b68f68; /* Светлый фон под карту */
+    border-radius: 10px; /* Скругление углов */
+    display: block;
+    width: 100%;
+}
+
+/* Стиль точек маршрута (классы .path) */
+.path {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.9); /* Темный фон */
+    color: #00FF00; /* Ярко-зеленый текст */
+    border: 2px solid rgba(0, 255, 0, 0.8); /* Яркая зеленая граница */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px; /* Чуть увеличенный текст */
+    text-shadow: 0 0 7px rgba(0, 255, 0, 1); /* Сильное свечение текста */
+    border-radius: 50%; /* Сделаем точки круглыми */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Плавные анимации */
+}
+
+.path:hover {
+    background-color: rgba(0, 200, 0, 0.6); /* Изменение цвета при наведении */
+    transform: scale(1.2); /* Большее увеличение при наведении */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Яркое свечение */
+}
+
+/* Блок для отображения собранных букв */
+.collected-letters {
+    margin-top: 20px;
+    font-size: 28px; /* Увеличен размер шрифта */
+    color: #ffcc00; /* Желтый цвет текста */
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8); /* Легкое свечение */
+}
+
+/* Кнопка сброса */
+.reset-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #FF6347; /* Оранжево-красный цвет */
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-button:hover {
+    background-color: #ff4500; /* Темно-красный при наведении */
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+/* Дополнительная стилизация для интерфейса */
+.task2-controls {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*TASK 3*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.task3-main {
+    max-width: 1800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.task3-container, .new-puzzle-container {
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+
+.puzzle-container, .new-puzzle-area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    grid-gap: 10px; /* Отступы между элементами */
+    padding: 20px; /* Отступ вокруг контейнера */
+    background-color: #f9f9f9; /* Цвет фона */
+    border: 2px dashed #ccc; /* Дашированная рамка */
+    border-radius: 8px; /* Скругление углов */
+    height: 98%;
+    min-height: 870px;
+    min-height: 800px;
+    
+}
+
+.new-puzzle-area {
+    /*grid-gap: 0px;*/
+    
+}
+
+
+.new-puzzle-area > div {
+    border: 1px solid #ccc; /* Граница для каждой клетки */
+    height: 192px; /* Занять всю высоту */
+    width: 192px;
+
+}
+
+
+
+.puzzle-piece {
+    width: 192px; /* Фиксированная ширина */
+    height: 192px; /* Фиксированная высота */
+    position: relative; /* Для абсолютного позиционирования внутри */
+    overflow: hidden; /* Скрываем выходящие части */
+    border-radius: 2px; /* Скругление углов */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    background-size: cover; /* Масштабирование изображения для заполнения блока */
+    background-position: center; /* Центрирование изображения */
+}
+
+
+
+.input-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#puzzle-inp{
+    padding: 10px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555; /* Цвет кнопки при наведении */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

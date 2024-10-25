@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кибер-детективы: поиск следов</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.puzzle-piece').on('mousedown', function (event) {
+                const $this = $(this);
+                const offset = $this.offset();
+                const mouseX = event.pageX - offset.left;
+                const mouseY = event.pageY - offset.top;
+
+                // Устанавливаем начальную позицию для перетаскивания
+                $(document).on('mousemove', function (e) {
+                    $this.css({
+                        left: e.pageX - mouseX,
+                        top: e.pageY - mouseY,
+                        position: 'absolute'
+                    });
+                });
+
+                $(document).on('mouseup', function () {
+                    $(document).off('mousemove');
+                    $(document).off('mouseup');
+
+                    // Получаем координаты и размеры кусочка пазла
+                    const puzzleOffset = $this.offset();
+                    const puzzleWidth = $this.outerWidth();
+                    const puzzleHeight = $this.outerHeight();
+
+                    // Определяем клетки сетки
+                    const gridCells = $('.new-puzzle-area > div');
+                    let closestCell = null;
+                    let closestDistance = Infinity;
+
+                    // Проходим по всем клеткам сетки, чтобы найти ближайшую
+                    gridCells.each(function () {
+                        const cellOffset = $(this).offset();
+                        const cellWidth = $(this).outerWidth();
+                        const cellHeight = $(this).outerHeight();
+
+                        // Вычисляем центр клетки
+                        const cellCenterX = cellOffset.left + cellWidth / 2;
+                        const cellCenterY = cellOffset.top + cellHeight / 2;
+
+                        // Вычисляем расстояние до центра клетки
+                        const distance = Math.sqrt(Math.pow(puzzleOffset.left + puzzleWidth / 2 - cellCenterX, 2) +
+                                                Math.pow(puzzleOffset.top + puzzleHeight / 2 - cellCenterY, 2));
+
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestCell = $(this);
+                        }
+                    });
+
+                    // Если расстояние меньше порога, добавляем пазл в клетку
+                    if (closestDistance < 50) { // пороговое значение для "примагничивания"
+                        // Отключаем изменение стилей, чтобы избежать изменения размера
+                        $this.css({
+                            position: 'absolute', // оставляем абсолютное позиционирование
+                            left: closestCell.position().left,
+                            top: closestCell.position().top,
+                            margin: 0 // сбрасываем margin
+                        });
+
+                        closestCell.append($this); // добавляем пазл в клетку
+                    } else {
+                        // Если не попал в клетку, возвращаем пазл на исходную позицию
+                        $this.css({
+                            position: 'absolute',
+                            left: '',
+                            top: ''
+                        });
+                    }
+                });
+            });
+
+            $('.task3-submit').click(function(event){
+                event.preventDefault();
+                if(check_puzzle()) {
+                    window.location.href = 'crossword.html';
+                } else {
+                    alert('Неправильный ответ!');
+                }
+            });
+        });
+
+
+    </script>
+</head>
+<body class="task3-body">
+    <header>
+        <h1>Кибер-детективы: Поиск следов</h1>
+    </header>
+
+    <div class="task3-main">
+        <section class="task3-container">
+            <h2>Кусочки пазла</h2>
+            <div class="puzzle-container">
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment3.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment10.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment7.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment1.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment14.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment2.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment11.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment6.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment5.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment4.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment9.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment15.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment12.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment8.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment16.jpg');"></div>
+                <div class="puzzle-piece" style="background-image: url('images/fragments/key-fragment13.jpg');"></div>
+            </div>
+        </section>
+
+        <section class="new-puzzle-container">
+            <h2>Собранный пазл</h2>
+            <div class="new-puzzle-area">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </section>
+
+        <div class="input-container">
+            <h2>Введите загаданное слово:</h2>
+            <form id="answer-form">
+                <input type="text" id="puzzle-inp" placeholder="Введите ответ" required>
+                <button type="submit" class="task3-submit">Проверить</button>
+            </form>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

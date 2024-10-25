@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кибер-детективы: расшифровка кода</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.task1-submit').click(function(event){
+                event.preventDefault();
+                if(check_answers()) {
+                    //alert('Все верно!');
+                    $('.inactive-link').removeClass('inactive-link');
+                }
+                else {
+                    //alert('Есть ошибки!');
+                }
+            });
+
+        });
+    </script>
+</head>
+<body class="task1-body">
+    <section class="task1-container">
+        <h1>
+            Задание 1: Расшифровка кода<br><br>
+            Чтобы найти криптографический ключ, нужно расшифровать сообщение от хакера с намеками на местонахождение ключа
+
+        </h1>
+
+        <table class="code-table">
+            <tr>
+                <th>-</th><th>А</th><th>Б</th><th>В</th><th>Г</th><th>Д</th>
+            </tr>
+            <tr>
+                <td>1</td><td>н</td><td>б</td><td>о</td><td>ч</td><td>т</td>
+            </tr>
+            <tr>
+                <td>2</td><td>в</td><td>к</td><td>я</td><td>и</td><td>е</td>
+            </tr>
+            <tr>
+                <td>3</td><td>д</td><td>с</td><td>а</td><td>л</td><td>и</td>
+            </tr>
+            <tr>
+                <td>4</td><td>ю</td><td>т</td><td>х</td><td>к</td><td>т</td>
+            </tr>
+            <tr>
+                <td>5</td><td>л</td><td>р</td><td>б</td><td>я</td><td>и</td>
+            </tr>
+            <tr>
+                <td>6</td><td>д</td><td>о</td><td>г</td><td>е</td><td>к</td>
+            </tr>
+        </table>
+
+        <h2>Введите ответы:</h2>
+
+        <form class="code-form">
+            <ol class="form-list">
+                <li>
+                    <label for="code1">1. Д6 Г3 А4 Г1:</label>
+                    <input type="text" id="code1">
+                </li>
+
+                <li>
+                    <label for="code2">2. А1 В3 В4 Б6 А6 Д5 Б4 Б3 Г5:</label>
+                    <input type="text" id="code2">
+                </li>
+
+                <li>
+                    <label for="code3">3. А2:</label>
+                    <input type="text" id="code3">
+                </li>
+
+                <li>
+                    <label for="code4">4. Б1 Г2 В5 А5 Д3 В1 Д4 Г6 Б2 Д2:</label>
+                    <input type="text" id="code4">
+                </li>
+            </ol>
+
+            
+            <button class="task1-submit">Проверить ответы</button>
+        </form>
+
+        <div class="task1-exits">
+            <div class="exit1">
+                <a href="index.html" class="inactive-link">
+                    <img src="images/gal-door.jpg" alt="Door 1">
+                </a>
+            </div>
+            
+            <div class="exit2">
+                <a href="task2.html" class="inactive-link">
+                    <img src="images/lib-door.jpg" alt="Door 2">
+                </a>
+            </div>
+        
+            <div class="exit3">
+                <a href="index.html" class="inactive-link">
+                    <img src="images/school-door.jpg" alt="Door 3">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

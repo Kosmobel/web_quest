@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кибер-детективы: поиск следов</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script>
+        let collectedWord = ''
+
+        function assignPathHandlers() {
+                $('.path').off('click').on('click', function () {
+                    collectedWord += $(this).data('letter');
+                    $('#collected-word').text('Ваше слово: ' + collectedWord);
+
+                    if (collectedWord === 'ИНФОРМАТИКА') {
+                        alert('Поздравляю! Вы собрали правильное слово!');
+                        window.location.href = 'task3.html';
+                    }
+                });
+
+                $('.reset-button').off('click').on('click', function () {
+                    if (collectedWord.length > 0) { // Убедитесь, что строка не пустая
+                        collectedWord = collectedWord.substring(0, collectedWord.length - 1);
+                        $('#collected-word').text('Ваше слово: ' + collectedWord);
+                    }
+                });
+            }
+
+        $(document).ready(function () {
+            render_map2();
+            assignPathHandlers(collectedWord)
+            //let collectedWord = '';
+
+        });
+    </script>
+</head>
+<body class="task2-body">
+    <section class="task2-container">
+        <div class="task2-rules">
+            <h2>Задание 2. Правила:</h2>
+            <p>Добро пожаловать в наше увлекательное приключение!</p>
+            <p>Ваша задача — пройти по виртуальному пути, оставленному хакером. На пути вы столкнетесь с различными следами, которые помогут вам разгадать загадку.</p>
+            <p>Чтобы успешно выполнить задание, следуйте этим правилам:</p>
+            <ul>
+                <li>Изучите карту, чтобы найти правильный путь.</li>
+                <li>Обращайте внимание на следы, которые приведут вас к спрятанному слову.</li>
+                <li>Запишите слово, которое вы найдете по пути к ключу.</li>
+                <li>Не торопитесь! Убедитесь, что вы внимательно осматриваете каждую часть карты.</li>
+                <li>Удачи вам в поисках!</li>
+            </ul>
+            <p>Подсказка: Хакер оставил за собой следы не только для развлечения. Каждое слово — это ключ к его тайнам. Среди них есть одно, которое связано с его страстью и профессией. Оно указывает на область, где знания и технологии пересекаются. Найдите это слово, и оно откроет вам двери к разгадкам!</p>
+        </div>
+        
+        
+        <div class="map-container">
+            <div class="map" id="map">
+                <canvas class="task2-canv" id="map-canv"></canvas>
+            </div>
+        </div>
+        
+        <div class="task2_controls">
+            <div class="collected-letters">
+                <span id="collected-word">Ваше слово: </span>
+            </div>
+            <button class="reset-button">Удалить букву</button>
+        </div>
+        
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

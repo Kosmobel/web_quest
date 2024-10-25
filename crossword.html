@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="crossword.css">
+    <title>Кибер-детективы: кроссворд</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="stylesheet" href="style_cross.css">
+    <link href="https://fonts.cdnfonts.com/css/trixie-2" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/trixie-2');
+    </style>
+</head>
+<body>
+    <div class="grid-item main-top">
+        cyber-quest: crossword
+    </div>
+
+
+    <section class="grid-item-cr">
+        <p>
+            В кроссворд необходимо вписать буквы ответов, регистр не важен. Для удобства можно перемещаться между клетками кроссворда при помощи стрелочек на клавиатуре.
+        </p>
+        <div id="crossword"></div>
+        <div class="clue-list">
+            <div class="btn-cont grid-item">
+                <button class = "cross-btn" onclick="checkAnswers()">Проверить ответы</button>
+                <button class = "cross-btn" onclick="showAnswers()">Посмотреть ответы</button>
+            </div>
+            <div>
+                <img src="images/cross-hints-fin.png" class="cross-hints">
+            </div>
+            
+        </div>
+        
+    </section>
+    <footer>
+        2024 г., Все права защищены законом.
+        <a href = "https://github.com/Kosmobel" class="footer-link">Автор на гитхаб</a>
+    </footer>
+    <script src = "crossword.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
