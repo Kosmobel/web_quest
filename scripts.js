@@ -27,7 +27,7 @@ function render_map() {
     canvas.height = 600;
 
 
-    //рисуем основную кривую, на которой затем будут буквы (ИНФОРМАТИКА)
+    
     let start = { x: 0, y: 100 };
     let end1 = { x: 250, y: 100 };
     let end2 = { x: end1.x + 190, y: end1.y + 80 };
@@ -38,7 +38,7 @@ function render_map() {
     let cp3 = { x: Math.floor(end2.x + (end3.x - end2.x)/2) + 100, y: end2.y + 80 };
 
 
-    //ctx.translate(0.5, 0.5);
+    
     ctx.beginPath();
     ctx.moveTo(start.x, start.y);
     ctx.quadraticCurveTo(cp1.x, cp1.y, end1.x, end1.y);
@@ -59,19 +59,19 @@ function render_map2() {
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
 
-    // Определяем масштаб для адаптации
-    const scaleX = canvasWidth / 1800 * 3; // 1800 - исходная ширина
-    const scaleY = canvasHeight / 900 * 1.5;  // 900 - исходная высота
+    
+    const scaleX = canvasWidth / 1800 * 3; 
+    const scaleY = canvasHeight / 900 * 1.5;  
 
 
-    //рисуем основную кривую, на которой затем будут буквы (ИНФОРМАТИКА)
+    
     let xoff = 0;
     let yoff = 100;
 
     ctx.scale(scaleX, scaleY)
     ctx.lineWidth = 5;
 
-    //ctx.translate(0.5, 0.5);
+    
     ctx.beginPath();
     ctx.moveTo(24 + xoff, 31 + yoff);
     ctx.bezierCurveTo(203 + xoff, 12 + yoff, 212 + xoff, 6 + yoff, 199 + xoff, 50 + yoff);
@@ -84,7 +84,7 @@ function render_map2() {
     ctx.bezierCurveTo(345 + xoff, 256 + yoff, 519 + xoff, 190 + yoff, 523 + xoff, 216 + yoff);
     ctx.bezierCurveTo(530 + xoff, 262 + yoff, 396 + xoff, 270 + yoff, 545 + xoff, 280 + yoff);
     ctx.bezierCurveTo(530 + xoff, 262 + yoff, 396 + xoff, 470 + yoff, 585 + xoff, 322 + yoff);
-    ctx.strokeStyle = '#00BFFF'; // Бирюзовый
+    ctx.strokeStyle = '#00BFFF'; 
 
     ctx.stroke();
 
@@ -103,7 +103,7 @@ function render_map2() {
     ctx.bezierCurveTo(371 + xoff, 209 + yoff, 435 + xoff, 450 + yoff, 297 + xoff, 329 + yoff);
     ctx.bezierCurveTo(286 + xoff, 319 + yoff, 421 + xoff, 369 + yoff, 502 + xoff, 276 + yoff);
     ctx.bezierCurveTo(523 + xoff, 252 + yoff, 565 + xoff, 395 + yoff, 558 + xoff, 382 + yoff);
-    ctx.strokeStyle = '#00FF00'; // Ярко-зеленый
+    ctx.strokeStyle = '#00FF00'; 
     ctx.stroke();
 
 
@@ -117,7 +117,7 @@ function render_map2() {
     ctx.bezierCurveTo(38 + xoff, 296 + yoff, 261 + xoff, 247 + yoff, 159 + xoff, 318 + yoff);
     ctx.bezierCurveTo(46 + xoff, 396 + yoff, 108 + xoff, 403 + yoff, 289 + xoff, 319 + yoff);
     ctx.bezierCurveTo(388 + xoff, 273 + yoff, 326 + xoff, 477 + yoff, 353 + xoff, 471 + yoff);
-    ctx.strokeStyle = '#800080'; // Фиолетовый
+    ctx.strokeStyle = '#800080'; 
     ctx.stroke();
     
 
@@ -178,25 +178,25 @@ function generateDivsFromPoints(points, word, scaleX, scaleY) {
     const container = document.getElementById('map');
     container.style.position = 'relative';
 
-    // Убедимся, что длина массива точек соответствует длине слова
-    const pointsLength = points.length / 2; // Длина точек (каждые 2 элемента - координаты)
+    
+    const pointsLength = points.length / 2; 
     const wordLength = word.length;
 
-    // Если длина слова больше, чем количество точек, обрезаем слово
+    
     const minLength = Math.min(pointsLength, wordLength);
 
     for (let i = 0; i < minLength; i++) {
-        const x = points[i * 2] * scaleX;        // Получаем координату X с учетом масштабирования
-        const y = points[i * 2 + 1] * scaleY;    // Получаем координату Y с учетом масштабирования
+        const x = points[i * 2] * scaleX;        
+        const y = points[i * 2 + 1] * scaleY;    
 
         const div = document.createElement('div');
         div.className = 'path';
-        div.dataset.letter = word[i]; // Устанавливаем букву из слова в data-атрибут
-        div.innerText = word[i];       // Устанавливаем букву из слова как текст
+        div.dataset.letter = word[i]; 
+        div.innerText = word[i];       
         div.style.position = 'absolute';
         div.style.left = `${x}px`;
         div.style.top = `${y}px`;
-        div.style.transform = 'translate(-50%, -50%)'; // Центрируем div по координатам
+        div.style.transform = 'translate(-50%, -50%)'; 
 
         container.appendChild(div);
     }
@@ -221,7 +221,7 @@ function drawShape(ctx, xoff, yoff) {
     ctx.stroke();
   }
 
-  //https://www.victoriakirst.com/beziertool/
+  
 
 
 

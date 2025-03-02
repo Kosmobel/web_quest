@@ -1,5 +1,5 @@
-const sizeY = 8; // Высота сетки
-const sizeX = 15; // Ширина сетки
+const sizeY = 8; 
+const sizeX = 15; 
 
 const grid = new Array(sizeY);
 for (let i = 0; i < grid.length; i++) {
@@ -54,19 +54,19 @@ function repaint() {
         const row = document.createElement('tr');
         for (let j = 0; j < sizeX; j++) {
             const cell = document.createElement('td');
-            cell.style.position = 'relative'; // Относительное позиционирование для ячейки
-            cell.style.padding = '0'; // Убираем внутренние отступы ячейки
+            cell.style.position = 'relative'; 
+            cell.style.padding = '0'; 
 
             if (!grid[i][j].empty) {
                 const input = document.createElement('input');
                 input.type = 'text';
                 input.maxLength = 1;
-                input.style.width = '100%'; // Устанавливаем ширину input на 100%
-                input.style.height = '100%'; // Устанавливаем высоту input на 100%
-                input.style.boxSizing = 'border-box'; // Учитываем бордюр в размере input
-                input.style.border = 'none'; // Убираем обводку
-                input.style.outline = 'none'; // Убираем обводку при фокусе
-                input.style.textAlign = 'center'; // Центрируем текст в input
+                input.style.width = '100%'; 
+                input.style.height = '100%'; 
+                input.style.boxSizing = 'border-box'; 
+                input.style.border = 'none'; 
+                input.style.outline = 'none'; 
+                input.style.textAlign = 'center'; 
 
                 if (grid[i][j].number !== null) {
                     const label = document.createElement('label');
@@ -132,9 +132,9 @@ function checkAnswers() {
                 const input = document.querySelector(`tr:nth-child(${i + 1}) td:nth-child(${j + 1}) input`);
                 if (input.value.toLowerCase() === grid[i][j].value.toLowerCase()) {
                     correctCount++;
-                    input.style.backgroundColor = 'lightgreen'; // Правильный ответ
+                    input.style.backgroundColor = 'lightgreen'; 
                 } else {
-                    input.style.backgroundColor = 'lightcoral'; // Неправильный ответ
+                    input.style.backgroundColor = 'lightcoral'; 
                 }
             }
         }
@@ -143,9 +143,12 @@ function checkAnswers() {
     const percentage = (correctCount / totalCount) * 100;
     if (percentage > 75) {
         alert(`Вы прошли! Правильных ответов: ${correctCount} из ${totalCount} (${percentage.toFixed(2)}%)`);
+        window.location.href = "final.html";
     } else {
         alert(`Вы не прошли. Правильных ответов: ${correctCount} из ${totalCount} (${percentage.toFixed(2)}%)`);
     }
+
+    
 }
 
 
@@ -179,7 +182,7 @@ function generateCrossword() {
     placeWord("мяч", 12, 23, "vertical", "Округлый и его пинают");
     placeWord("спорт", 9, 25, "vertical", "Деятельность, направленная на укрепление организма");
     */
-    //generateClues();
+    
     repaint();
 }
 
