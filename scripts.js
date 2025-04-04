@@ -6,10 +6,12 @@
 
 function check_answers(){
 
-    const field1_val = $('#code1').val();
-    const field2_val = $('#code2').val();
-    const field3_val = $('#code3').val();
-    const field4_val = $('#code4').val();
+    const normalize = (str) => str.trim().toLowerCase();
+
+    const field1_val = normalize($('#code1').val());
+    const field2_val = normalize($('#code2').val());
+    const field3_val = normalize($('#code3').val());
+    const field4_val = normalize($('#code4').val());
 
     if(field1_val == 'ключ' && field2_val == 'находится' && field3_val == 'в' && field4_val == 'библиотеке') { return true;}
     else return false;
